@@ -12,6 +12,7 @@ int rec;
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(19200);
+  Serial.println("Perfusion System Controller Connected");
   Serial.setTimeout(100);
   pinMode(speedPin, OUTPUT);
   pinMode(onPin, OUTPUT);
@@ -29,10 +30,11 @@ void loop() {
   recOn = ((rec % 100)-(rec % 10))/10;
   recDir = (rec % 10);
   recSpeed = floor(rec/100);
-  Serial.print(recOn);
-  Serial.print(",");
-  Serial.print(recDir);
-  Serial.print(",");
+  Serial.print("Power: ");
+  Serial.println(recOn);
+  Serial.print("Direction: ");
+  Serial.println(recDir);
+  Serial.print("Speed: ");
   Serial.println(recSpeed);
   digitalWrite(onPin, recOn);
   digitalWrite(directionPin, recDir);
